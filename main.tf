@@ -1,8 +1,8 @@
 #######################################################################
-## CIS 3.x series of remeditations
+## CIS 3.x series of remediations
 #######################################################################
 
-# defining data sources for all the CIS metric filters
+## Defining data sources for all the CIS metric filters
 
 data "local_file" "3_1_metric_filter" {
     filename = "${path.module}/filters/3_1_metric.filter"
@@ -60,14 +60,13 @@ data "local_file" "3_14_metric_filter" {
     filename = "${path.module}/filters/3_14_metric.filter"
 }
 
-# topics to which all alarms will be subcribed
+## SNS Topics to which all alarms will be subscribed
 resource "aws_sns_topic" "cis_sns_topics" {
   name = "${element(var.cis_sns_topics,count.index)}"
   count = "${var.cis_sns_topic_count}"
 }
 
-
-
+## Resources grouped by Control number
 # 3.1 - Ensure a log metric filter and alarm exist for unauthorized API calls
 resource "aws_cloudwatch_log_metric_filter" "3_1_unauthorized_api_calls_metric_filter" {
   count        = "${var.enable_3_1 ? 1: 0}"
@@ -98,9 +97,7 @@ resource "aws_cloudwatch_metric_alarm" "3_1_unauthorized_api_calls_alarm" {
   alarm_actions             = [ "${aws_sns_topic.cis_sns_topics.*.arn}" ]
 }
 
-
 # 3.2 - Ensure a log metric filter and alarm exist for Management Console sign-in without MFA - what does this mean for non MFA use on this account
-
 resource "aws_cloudwatch_log_metric_filter" "3_2_console_without_MFA" {
   count          = "${var.enable_3_2 ? 1: 0}"
 
@@ -114,7 +111,6 @@ resource "aws_cloudwatch_log_metric_filter" "3_2_console_without_MFA" {
     value     = "1"
   }
 }
-
 
 resource "aws_cloudwatch_metric_alarm" "3_2_console_without_MFA_alarm" {
   count                     = "${var.enable_3_2 ? 1: 0}"
@@ -133,7 +129,6 @@ resource "aws_cloudwatch_metric_alarm" "3_2_console_without_MFA_alarm" {
 }
 
 # 3.3 - Ensure a log metric filter and alarm exist for usage of "root" account
-
 resource "aws_cloudwatch_log_metric_filter" "3_3_root_usage" {
   count                     = "${var.enable_3_3 ? 1: 0}"
 
@@ -167,7 +162,6 @@ resource "aws_cloudwatch_metric_alarm" "3_3_root_usage_alarm" {
 
 
 # 3.4 - Ensure a log metric filter and alarm exist for IAM policy changes
-# subscriptions - 1,2,3
 
 resource "aws_cloudwatch_log_metric_filter" "3_4_iam_changes" {
   count          = "${var.enable_3_4 ? 1: 0}"
@@ -232,7 +226,6 @@ resource "aws_cloudwatch_metric_alarm" "3_5_cloudtrail_changes_alarm" {
 }
 
 # 3.6 - Ensure a log metric filter and alarm exist for AWS Management Console authentication failures
-
 resource "aws_cloudwatch_log_metric_filter" "3_6_console_auth_failures" {
   count           = "${var.enable_3_6 ? 1: 0}"
 
@@ -294,7 +287,6 @@ resource "aws_cloudwatch_metric_alarm" "3_7_delete_cmk_alarm" {
   alarm_actions             = [ "${aws_sns_topic.cis_sns_topics.*.arn}" ]
 }
 
-
 # 3.8 - Ensure a log metric filter and alarm exist for S3 bucket policy changes
 resource "aws_cloudwatch_log_metric_filter" "3_8_s3_bucket_policy_changes" {
   count          = "${var.enable_3_8 ? 1: 0}"
@@ -326,11 +318,7 @@ resource "aws_cloudwatch_metric_alarm" "3_8_s3_bucket_policy_changes_alarm" {
   alarm_actions             = [ "${aws_sns_topic.cis_sns_topics.*.arn}" ]
 }
 
-
-
 # 3.9 - Ensure a log metric filter and alarm exist for AWS Config configuration changes
-
-
 resource "aws_cloudwatch_log_metric_filter" "3_9_Config_changes" {
   count          = "${var.enable_3_9 ? 1: 0}"
 
@@ -423,7 +411,6 @@ resource "aws_cloudwatch_metric_alarm" "3_11_NACL_changes_alarm" {
   alarm_actions             = [ "${aws_sns_topic.cis_sns_topics.*.arn}" ]
 }
 
-
 # 3.12 - Ensure a log metric filter and alarm exist for changes to network gateways
 resource "aws_cloudwatch_log_metric_filter" "3_12_network_gateway_changes" {
   count          = "${var.enable_3_12 ? 1: 0}"
@@ -454,7 +441,6 @@ resource "aws_cloudwatch_metric_alarm" "3_12_network_gateway_alarm" {
   insufficient_data_actions = []
   alarm_actions             = [ "${aws_sns_topic.cis_sns_topics.*.arn}" ]
 }
-
 
 # 3.13 - Ensure a log metric filter and alarm exist for route table changes
 resource "aws_cloudwatch_log_metric_filter" "3_13_route_table_changes" {
