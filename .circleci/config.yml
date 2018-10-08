@@ -15,3 +15,12 @@ jobs:
           name: terraform_validate
           command: terraform validate -no-color
 
+workflows:
+  version: 2
+  date_and_validate:
+    jobs:
+      - validate:
+          filters:
+            branches:
+              ignore: master
+
