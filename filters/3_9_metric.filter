@@ -1,0 +1,2 @@
+{($.eventSource = config.amazonaws.com) && (($.eventName=StopConfigurationRecorder)|| ($.eventName=DeleteDeliveryChannel)||($.eventName=PutDeliveryChannel)|| ($.eventName=PutConfigurationRecorder))}
+ 

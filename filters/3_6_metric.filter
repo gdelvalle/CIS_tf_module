@@ -1,0 +1,1 @@
+{ ($.eventName = ConsoleLogin) && ($.errorMessage = "Failed authentication") }

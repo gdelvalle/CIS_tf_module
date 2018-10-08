@@ -1,0 +1,1 @@
+{ $.userIdentity.sessionContext.attributes.mfaAuthenticated != "true" }

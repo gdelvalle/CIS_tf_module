@@ -1,0 +1,1 @@
+{($.eventSource = kms.amazonaws.com) && (($.eventName=DisableKey)|| ($.eventName=ScheduleKeyDeletion))}

@@ -1,0 +1,1 @@
+{ ($.errorCode = "*UnauthorizedOperation") || ($.errorCode = "AccessDenied*") }
