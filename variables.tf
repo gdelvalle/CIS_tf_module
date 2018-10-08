@@ -1,4 +1,8 @@
 
+########################
+## global configuration variables
+########################
+
 variable "environment" {}
 
 variable "cloudtrail_log_group" {}
@@ -6,13 +10,16 @@ variable "cloudtrail_log_group" {}
 variable "cis_sns_topic_count" {
   default ="0"
 }
-
 variable "cis_sns_topics" {
   type = "list"
   default =[]
 }
 
-## booleans per control
+
+#######################
+### Booleans to conditionally enable a given control
+########################
+
 variable "enable_3_1" {
   default = true
 
