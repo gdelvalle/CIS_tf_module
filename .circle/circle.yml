@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  validate:
+    docker:
+      - image: hashicorp/terraform:light
+    steps:
+      - checkout
+      - run:
+          name: Print the Current Time
+          command: date
+      - run: 
+          name: terraform_init
+          command: terraform init -no-color
+      - run:
+          name: terraform_validate
+          command: terraform validate -no-color
+
