@@ -33,4 +33,5 @@ See  the Unsupported protocol list here: https://www.terraform.io/docs/providers
 ## TODO
 - Add support for notification subscriptions
 - Add created topics ARN to outputs
+- Consider creating a control sub-module  that would define datasource,create the metric and the alarm (e.g. module "cis_control_3_1" ) 
 
