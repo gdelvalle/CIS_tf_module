@@ -14,7 +14,7 @@ cis_sns_topics       = [ "MY_CIS_TOPIC" ]
 enable_3_1           = false 
 ...
 ...
-enable_3_14			 = false
+enable_3_14          = false
 
 }
 ```
@@ -22,6 +22,7 @@ enable_3_14			 = false
 
 ### Outputs
 
+None Yet.
 
 ## Other Notes
 
@@ -31,4 +32,5 @@ See  the Unsupported protocol list here: https://www.terraform.io/docs/providers
 
 ## TODO
 - Add support for notification subscriptions
+- Add created topics ARN to outputs
 
