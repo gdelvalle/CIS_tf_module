@@ -1,3 +1,7 @@
+## Purpose
+
+Implementation of [CIS Amazon Web Services Foundations - v1.2.0 05-23-2018](https://d0.awsstatic.com/whitepapers/compliance/AWS_CIS_Foundations_Benchmark.pdf).
+
 ## Usage
 
 ### Example
@@ -5,16 +9,12 @@
 
 module "cis" {
   source = "git@github.com:gdelvalle/CIS_tf_module.git"
-}
-
-environment          = "test"
-cloudtrail_log_group = "YOUR_LOGGROUP"
-cis_sns_topic_count  = "1"
-cis_sns_topics       = [ "MY_CIS_TOPIC" ]
-enable_3_1           = false 
-...
-...
-enable_3_14          = false
+  environment          = "test"
+  cloudtrail_log_group = "YOUR_LOGGROUP"
+	cis_sns_topic_count  = "1"
+	cis_sns_topics       = [ "MY_CIS_TOPIC" ]
+	enable_3_1           = false 
+	enable_3_14          = false
 
 }
 ```
@@ -58,7 +58,6 @@ See the Unsupported protocol list here: https://www.terraform.io/docs/providers/
 
 ## TODO
 - Add support for notification subscriptions
-- Add created topics ARN to outputs
 - Consider creating a control sub-module  that would define datasource,create the metric and the alarm (e.g. module "cis_control_3_1" ) 
 - As I expand the  Controls `cloudtrail_log_group`  should optionally be created in module
 
