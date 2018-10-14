@@ -1,1 +1,1 @@
-{ $.userIdentity.sessionContext.attributes.mfaAuthenticated != "true" }
+{ ($.eventName = "ConsoleLogin") && ($.additionalEventData.MFAUsed != "Yes") }

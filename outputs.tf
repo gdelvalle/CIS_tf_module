@@ -1,4 +1,4 @@
-# e.g.
-#output "ec2_instance_public_ip" {
-#  value = "${aws_instance.demo-ec2.public_ip}"
-#}
+
+output "cis_sns_topics" {
+  value = "${aws_sns_topic.cis_sns_topics.*.arn}"
+}
