@@ -27,7 +27,7 @@ module "cis" {
 |  environment | Environment these resources are being created in| string   | Development |yes|
 |cloudtrail_log_group| Cloudtrail's CloudWatch LogGroup| string| `''`| yes|
 |cis_sns_topic_count| Count based on the Number of Topics to be created|string|`0`|no|
-|cis_sns_topics|Topics All Notifications will be sent to.|list|`[]`|no|
+|cis_sns_topics|Topics All Notifications will be sent to|list|`[]`|no|
 |enable_3_1|Boolean for Control 3.1|string|true|no|
 |enable_3_2|Boolean for Control 3.2|string|true|no|
 |enable_3_3|Boolean for Control 3.3|string|true|no|
@@ -58,6 +58,6 @@ See the Unsupported protocol list here: https://www.terraform.io/docs/providers/
 
 ## TODO
 - Add support for notification subscriptions
-- Consider creating a control sub-module  that would define datasource,create the metric and the alarm (e.g. module "cis_control_3_1" ) 
+- Consider creating a control sub-module  that would define datasource,create the metric and the alarm (e.g. module "cis_control_3_1") 
 - As I expand the  Controls `cloudtrail_log_group`  should optionally be created in module
 
